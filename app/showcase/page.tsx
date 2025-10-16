@@ -16,11 +16,11 @@ export default function ShowcasePage() {
       {/* Hero Section */}
       <section className="relative h-[50vh] w-full">
         <Image
-          src="/Morocco/morocco-11.webp?height=800&width=1920"
-          alt="Photography collections showcase"
+          src="/animations/first-person/first-person-2.gif?height=800&width=1920"
+          alt="Motion collections showcase"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-black/50" />
         <motion.div
@@ -29,9 +29,9 @@ export default function ShowcasePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl text-white mb-4">Photography Collections</h1>
+          <h1 className="text-4xl md:text-5xl text-white mb-4">Motion Collections</h1>
           <p className="text-white/90 text-lg max-w-2xl">
-            Explore my diverse portfolio of photography from around the world
+            Explore our diverse portfolio of animations created for Roblox experiences around the world
           </p>
         </motion.div>
       </section>

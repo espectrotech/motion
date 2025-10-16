@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Montserrat } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
@@ -12,8 +12,14 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  weight: ["400", "700"],
+})
+
 export const metadata: Metadata = {
-  title: "X100 | Next.js Theme for Photographers",
+  title: "Motion | Espectro Tech",
   description: "A Next.js portfolio for professional photographers, designed to flawlessly showcase powerful visual stories.",
   // Set initial theme-color meta tag for iOS Safari
   themeColor: [
@@ -24,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={montserrat.variable} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SafariThemeColor />

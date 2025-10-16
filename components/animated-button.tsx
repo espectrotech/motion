@@ -11,6 +11,7 @@ interface AnimatedButtonProps {
   icon?: ReactNode
   variant?: "primary" | "secondary" | "outline"
   className?: string
+  externalLink?: boolean
   onClick?: () => void
 }
 
@@ -49,6 +50,7 @@ export default function AnimatedButton({
   icon,
   variant = "primary",
   className = "",
+  externalLink = false,
   onClick,
 }: AnimatedButtonProps) {
   const baseStyles = "btn inline-flex items-center gap-2 rounded-full transition-colors"
@@ -75,7 +77,7 @@ export default function AnimatedButton({
   }
 
   return (
-    <Link href={href} className={`group ${baseStyles} ${variantStyles[variant]} ${className}`} onClick={handleClick}>
+    <Link href={href} target={externalLink ? "_blank" : "_self"} className={`group ${baseStyles} ${variantStyles[variant]} ${className}`} onClick={handleClick}>
       <span>{children}</span>
       {icon && <span className="btn-icon overflow-hidden">{icon}</span>}
     </Link>

@@ -1,9 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { ArrowRight, Camera, Globe, Award, Users } from "lucide-react"
+import { ArrowRight, Camera, Globe, Award, Users, Calendar, Code } from "lucide-react"
 import { motion } from "framer-motion"
 import AnimatedButton from "@/components/animated-button"
+import { CallToAction } from "@/components/call-to-action"
 
 export default function AboutPage() {
   return (
@@ -11,11 +12,11 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[50vh] w-full">
         <Image
-          src="/Iceland/iceland-7.jpg?height=800&width=1920"
+          src="/animations/first-person/first-person-2.gif?height=800&width=1920"
           alt="About X100"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-black/50" />
         <motion.div
@@ -24,8 +25,8 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl text-white mb-4">About Me</h1>
-          <p className="text-white/90 text-lg max-w-2xl">The story behind the lens</p>
+          <h1 className="text-4xl md:text-5xl text-white mb-4">About Us</h1>
+          <p className="text-white/90 text-lg max-w-2xl">The story behind the motion</p>
         </motion.div>
       </section>
       <div className="header-height"></div>
@@ -41,10 +42,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <Image
-              src="/Iceland/iceland-12.jpg?height=1200&width=800"
-              alt="Photographer portrait"
+              src="/animations/combat/combat-1.gif?height=1200&width=800"
+              alt="Motion portrait"
               fill
-              className="object-cover"
+              className="object-cover object-left"
             />
           </motion.div>
           <motion.div
@@ -52,37 +53,34 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="text-justify"
           >
             <h2 className="text-3xl md:text-4xl mb-6">The Journey</h2>
             <p className="text-primary mb-4">
-              I'm a professional photographer with over 10 years of experience capturing moments around the world. My
-              passion for photography began during a backpacking trip through Southeast Asia, where I discovered the
-              power of visual storytelling.
+              We are a professional Roblox development team with 3 years of combined experience in animation and game mechanics. Our team brings together coding expertise and animation mastery to create immersive and dynamic experiences on Roblox.
             </p>
             <p className="text-primary mb-4">
-              Since then, I've traveled to over 30 countries, documenting landscapes, cultures, and urban environments.
-              My work has been featured in publications like National Geographic, Condé Nast Traveler, and Vogue.
+              We met at our federal university, where our shared passion for game development and storytelling brought us together. Our work focuses on crafting animations that bring characters to life, enhance gameplay, and elevate player engagement.
             </p>
             <p className="text-primary mb-6">
-              I believe that photography has the power to connect people across cultures and inspire a deeper
-              appreciation for our world. Each image I create aims to tell a story and evoke emotion.
+              Every project we create is built with precision, creativity, and a deep understanding of both programming and visual storytelling. From fluid combat sequences to expressive emotes, we aim to transform Roblox experiences with polished, professional animations.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2">
-                <Camera size={20} className="text-primary" />
-                <span className="text-primary">Fujifilm x100vi & Leica M10</span>
+                <Users size={20} className="text-primary" />
+                <span className="text-primary">Collaborative, Story-Driven Approach</span>
               </div>
               <div className="flex items-center gap-2">
-                <Globe size={20} className="text-primary" />
-                <span className="text-primary">30+ Countries</span>
+                <Code size={20} className="text-primary" />
+                <span className="text-primary">Expertise in Roblox Studio & Lua Scripting</span>
               </div>
               <div className="flex items-center gap-2">
                 <Award size={20} className="text-primary" />
-                <span className="text-primary">Award-winning</span>
+                <span className="text-primary">Focused on High-Quality, Player-Centered Animations</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users size={20} className="text-primary" />
-                <span className="text-primary">Workshops & Mentoring</span>
+                <Calendar size={20} className="text-primary" />
+                <span className="text-primary">3 Years of Team Experience in Animation & Development</span>
               </div>
             </div>
           </motion.div>
@@ -99,25 +97,34 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            My Philosophy
+            Our Philosophy
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Authenticity",
+                title: "Payments",
                 description:
-                  "I believe in capturing authentic moments that tell real stories. My approach focuses on finding beauty in truth rather than manufacturing perfect scenes.",
+                  "Payments are only available via PayPal or Roblox (Robux).",
               },
               {
-                title: "Connection",
+                title: "Policies",
                 description:
-                  "Photography creates connections - between viewer and subject, between cultures, and between people. I strive to foster these connections through my work.",
+                  "If the customer wants to add something that was not described in job, an additional fee will be asked.",
+              },
+              {
+                title: "Terms",
+                description:
+                  "You must provide all needed models, and have payment ready.",
               },
               {
                 title: "Respect",
                 description:
-                  "I approach every environment and subject with deep respect. This means respecting cultures, natural spaces, and the stories I'm privileged to capture.",
+                  "If the client shares or distributes the work during development without permission, our team reserves the right to take appropriate action.",
               },
+              {
+                title: "Copyright",
+                description: "All animations become the property of the client upon delivery and full payment. Until then, the rights remain with our team."
+              }
             ].map((item, index) => (
               <motion.div
                 key={item.title}
@@ -136,7 +143,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline
       <section className="py-16 px-4 md:px-8 max-w-5xl mx-auto">
         <motion.h2
           className="text-3xl md:text-4xl mb-12 text-center"
@@ -198,26 +205,9 @@ export default function AboutPage() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* Call to Action */}
-      <section className="min-w-[90%] justify-self-center mr-4 ml-4 py-20 my-20 px-4 md:px-8 rounded-3xl border-[1px] border-border">
-        <motion.div
-          className="max-w-7xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-primary text-3xl md:text-4xl mb-6">Collaborate?</h2>
-          <p className="text-primary max-w-2xl mx-auto mb-8">
-            Whether you're looking for prints, licensing, or a custom photography project, feel free to get in touch.
-          </p>
-          <AnimatedButton href="/contact" variant="primary" icon={<ArrowRight size={18} />}>
-            Get in Touch
-          </AnimatedButton>
-        </motion.div>
-      </section>
+      <CallToAction />
     </div>
   )
 }

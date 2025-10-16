@@ -6,13 +6,12 @@ import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ThemeToggle } from "./theme-toggle"
-import Logo from "./logo"
+import { LogoIcon } from "./logo-icon"
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Showcase", href: "/showcase" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
 ]
 
 export default function Header() {
@@ -76,7 +75,7 @@ export default function Header() {
                 isScrolled || pathname !== "/" ? "text-primary" : "text-primary"
               }`}
             >
-              X100
+              <LogoIcon className="w-5" />
             </Link>
           </div>
         

@@ -1,7 +1,7 @@
 /**
  * Represents a photo in the gallery
  */
-export interface Photo {
+export interface Animation {
   /** Unique identifier for the photo */
   id: string
   /** Source path of the photo */
@@ -12,8 +12,6 @@ export interface Photo {
   height: number
   /** Alt text for accessibility */
   alt: string
-  /** Technical metadata about the photo */
-  metadata: PhotoMetadata
 }
 
 /**
@@ -57,7 +55,7 @@ export interface Collection {
   /** Whether the collection is featured on the homepage */
   featured: boolean
   /** Array of photos in the collection */
-  photos: Photo[]
+  animations: Animation[]
 }
 
 /**

@@ -15,7 +15,7 @@ const SkeletonOne = () => {
   return (
     <div>
       <p className="font-oldLondon font-bold md:text-4xl text-xl text-white">
-        Tokyo Nights
+        First Person Recharging
       </p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Exploring the vibrant nightlife and neon-lit streets of Tokyo's urban landscape.
@@ -68,25 +68,25 @@ const cards = [
     id: 1,
     content: <SkeletonOne />,
     className: "md:col-span-2",
-    thumbnail: "/Tokyo/tokyo-22.webp",
+    thumbnail: "/animations/first-person/first-person-1.gif",
   },
   {
     id: 2,
     content: <SkeletonTwo />,
     className: "col-span-1",
-    thumbnail: "/Urban Portraits/urban-portraits-1.jpg",
+    thumbnail: "/animations/finalization/finalization-1.gif",
   },
   {
     id: 3,
     content: <SkeletonThree />,
     className: "col-span-1",
-    thumbnail: "/new zealand/new-zealand-18.jpg",
+    thumbnail: "/animations/generic/generic-1.gif",
   },
   {
     id: 4,
     content: <SkeletonFour />,
     className: "md:col-span-2",
-    thumbnail: "/Iceland/iceland-1.jpg",
+    thumbnail: "/animations/jumpscare/jumpscare-1.gif",
   },
 ];
 
@@ -146,7 +146,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
       height="500"
       width="500"
       className={cn(
-        "object-cover object-top absolute inset-0 h-full w-full transition duration-200"
+        "object-cover object-center absolute inset-0 h-full w-full transition duration-200"
       )}
       alt="thumbnail"
     />
@@ -175,7 +175,7 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
   );
 };
 
-export function LayoutGridDemo() {
+export function   LayoutGridDemo() {
   return (
     <div className="h-screen py-20 w-full">
       <LayoutGrid cards={cards} />

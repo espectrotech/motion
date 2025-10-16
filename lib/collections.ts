@@ -1,62 +1,51 @@
-import type { Collection, Photo } from "./types"
+import type { Animation, Collection } from "./types";
 
 // Collection format mapping
-const collectionFormats: Record<string, string> = {
-  'bali': 'jpeg',
-  'morocco': 'webp',
-  'tokyo': 'jpg',
-  'new-zealand': 'jpg',
-  'iceland': 'jpg',
-  'urban-portraits': 'jpg'
+export const collectionFormats: Record<string, string> = {
+  'brainrot': 'gif',
+  'combat': 'gif',
+  'meshrig': 'gif',
+  'gun': 'gif',
+  'finalization': 'gif',
+  'lifestyle': 'gif'
 } as const
 
 // Collection folder name mapping (for case sensitivity)
-const collectionFolders: Record<string, string> = {
-  'bali': 'Bali',
-  'morocco': 'Morocco',
-  'tokyo': 'Tokyo',
-  'new-zealand': 'new zealand',
-  'iceland': 'Iceland',
-  'urban-portraits': 'Urban Portraits'
+export const collectionFolders: Record<string, string> = {
+  'brainrot': 'brainrot',
+  'combat': 'combat',
+  'meshrig': 'meshrig',
+  'gun': 'gun',
+  'finalization': 'finalization',
+  'lifestyle': 'lifestyle'
 } as const
 
 // Collection image counts and formats
-const collectionImages: Record<string, { count: number; formats: string[] }> = {
-  'bali': { 
+export const collectionImages: Record<string, { count: number; formats: string[] }> = {
+  'brainrot': { 
+    count: 6,
+    formats: ['gif']
+  },
+  'combat': { 
+    count: 5,
+    formats: ['gif']
+  },
+  'meshrig': { 
+    count: 10,
+    formats: ['gif']
+  },
+  'gun': { 
+    count: 4,
+    formats: ['gif']
+  },
+  'finalization': { 
+    count: 6,
+    formats: ['gif']
+  },
+  'lifestyle': { 
     count: 16,
-    formats: ['jpeg', 'jpg']
-  },
-  'morocco': { 
-    count: 21,
-    formats: ['webp']
-  },
-  'tokyo': { 
-    count: 20,
-    formats: ['jpg']
-  },
-  'new-zealand': { 
-    count: 18,
-    formats: ['jpg']
-  },
-  'iceland': { 
-    count: 14,
-    formats: ['jpg']
-  },
-  'urban-portraits': { 
-    count: 16,
-    formats: ['jpg']
+    formats: ['gif']
   }
-} as const
-
-// Common metadata for photos
-const defaultMetadata = {
-  camera: "Sony Alpha A7 IV",
-  lens: "24-70mm f/2.8",
-  aperture: "f/8.0",
-  shutterSpeed: "1/250",
-  iso: "100",
-  focalLength: "35mm",
-  takenAt: new Date().toISOString().split("T")[0],
 } as const
 
 // Aspect ratios for different image types
@@ -68,7 +57,7 @@ const aspectRatios = [
 ] as const
 
 // Function to get images for a collection
-function getCollectionImages(collectionSlug: string): Photo[] {
+function getCollectionAnimations(collectionSlug: string): Animation[] {
   // Get the proper folder name from our mapping instead of generating it
   const folderName = collectionFolders[collectionSlug]
   if (!folderName) return []
@@ -79,7 +68,7 @@ function getCollectionImages(collectionSlug: string): Photo[] {
   return Array.from({ length: collectionInfo.count }, (_, i) => {
     const index = i + 1
     const format = collectionSlug === 'bali' && index >= 10 && index <= 15 ? 'jpg' : collectionFormats[collectionSlug]
-    const imagePath = `/${folderName}/${collectionSlug}-${index}.${format}`
+    const imagePath = `/animations/${folderName}/${collectionSlug}-${index}.${format}`
     const dimensions = aspectRatios[index % aspectRatios.length]
 
     return {
@@ -88,7 +77,6 @@ function getCollectionImages(collectionSlug: string): Photo[] {
       width: dimensions.width,
       height: dimensions.height,
       alt: `${collectionSlug} image ${index}`,
-      metadata: defaultMetadata,
     }
   })
 }
@@ -97,82 +85,82 @@ function getCollectionImages(collectionSlug: string): Photo[] {
 function getCoverImagePath(folderName: string): string {
   const collectionSlug = folderName.toLowerCase().replace(' ', '-')
   const format = collectionFormats[collectionSlug] || 'jpg'
-  return `/${folderName}/cover.${format}`
+  return `/animations/${folderName}/cover.${format}`
 }
 
 // Collections data
 const collections: Collection[] = [
   {
     id: "1",
-    slug: "new-zealand",
-    title: "New Zealand Landscapes",
-    description: "Breathtaking landscapes from across New Zealand",
+    slug: "brainrot",
+    title: "Brainrot: Viral & Expressive Emotes",
+    description: "High-energy, trend-based animations for maximum player engagement.",
     fullDescription:
-      "New Zealand offers some of the most diverse and dramatic landscapes in the world. From the snow-capped Southern Alps to the pristine beaches of the Coromandel Peninsula, this collection captures the raw beauty and majesty of Aotearoa.",
-    coverImage: getCoverImagePath("new zealand"),
-    tags: ["Nature", "Landscape", "Mountains"],
+      "This collection is a curated set of high-energy, modern animations designed to capture the fast-paced nature of internet culture. Perfect for in-game emotes and viral marketing, these movements are crafted to be instantly recognizable and highly shareable, adding a unique, expressive layer to your game. Boost player interaction with animations that are both current and unforgettable.",
+    coverImage: getCoverImagePath("brainrot"),
+    tags: ["Emotes", "Viral", "Engaging"],
     featured: true,
-    photos: getCollectionImages("new-zealand"),
+    animations: getCollectionAnimations("brainrot"),
   },
   {
     id: "2",
-    slug: "tokyo",
-    title: "Japan: Urban & Traditional",
-    description: "The contrast between modern and traditional Japan",
+    slug: "meshrig",
+    title: "Advanced Mesh Rigs & Custom Characters",
+    description: "Animations for complex mesh rigs and non-standard characters.",
     fullDescription:
-      "Japan presents a fascinating juxtaposition of ultramodern urban environments and serene traditional settings. This collection explores the visual dialogue between Tokyo's neon-lit streets and the tranquil temples of Kyoto, capturing Japan's unique cultural identity.",
-    coverImage: getCoverImagePath("Tokyo"),
-    tags: ["Urban", "Culture", "Architecture"],
+    "This collection showcases my proficiency in animating complex mesh rigs and custom-modeled characters. Going beyond standard Roblox rigs, I specialize in bringing unique character designs to life with fluid, bone-based animations. Each piece highlights meticulous weight painting and precise keyframing to ensure flawless deformation and expressive movements, perfect for high-fidelity projects and games that require a unique artistic vision.",
+    coverImage: getCoverImagePath("meshrig"), // Certifique-se de que a imagem de capa seja relevante
+    tags: ["Technical", "Custom", "High-Fidelity"],
     featured: true,
-    photos: getCollectionImages("tokyo"),
+    animations: getCollectionAnimations("meshrig"),
   },
   {
     id: "3",
-    slug: "bali",
-    title: "Bali: Island of the Gods",
-    description: "Tropical paradise and cultural heritage of Bali",
+    slug: "gun",
+    title: "FPS Gun Animations",
+    description: "Fluid and realistic gun animations for a tactical gameplay experience.",
     fullDescription:
-      "Known as the Island of the Gods, Bali captivates with its dramatic landscapes, vibrant cultural heritage, and spiritual atmosphere. This collection documents the island's terraced rice fields, ancient temples, pristine beaches, and the warmth of Balinese people.",
-    coverImage: getCoverImagePath("Bali"),
-    tags: ["Tropical", "Culture", "Nature"],
+      "This collection features a high-fidelity set of animations tailored for first-person shooter games. Each movement, from weapon equipping and reloads to intricate firing sequences, is crafted with an emphasis on realistic timing and impact. These animations are designed to enhance player immersion, providing a tactile and responsive feel that elevates the core combat loop of any FPS title.",
+    coverImage: getCoverImagePath("gun"), // Verifique se a imagem de capa é relevante
+    tags: ["Weapon", "FPS", "Action"],
     featured: true,
-    photos: getCollectionImages("bali"),
+    animations: getCollectionAnimations("gun"),
   },
   {
     id: "4",
-    slug: "iceland",
-    title: "Iceland: Land of Fire and Ice",
-    description: "Dramatic landscapes of Iceland",
+    slug: "finalization",
+    title: "Finishing Moves: Land of Fire and Ice",
+    description: "Epic finishing animations combining power and style",
     fullDescription:
-      "Iceland's otherworldly landscapes showcase nature's raw power and beauty. This collection captures the country's dramatic contrasts: steaming geothermal areas alongside massive glaciers, thundering waterfalls cutting through black lava fields, and the ethereal Northern Lights dancing above it all.",
-    coverImage: getCoverImagePath("Iceland"),
-    tags: ["Nature", "Landscape", "Winter"],
+      "This collection showcases our finishing move animations for combat, blending dramatic flair with impactful gameplay. From fiery sword strikes to icy special attacks, each animation is designed to feel powerful, cinematic, and satisfying, giving players a visually striking conclusion to battles.",
+    coverImage: getCoverImagePath("finalization"),
+    tags: ["Combat", "Action", "Weapon"],
     featured: false,
-    photos: getCollectionImages("iceland"),
+    animations: getCollectionAnimations("finalization"),
   },
   {
     id: "5",
-    slug: "morocco",
-    title: "Colors of Morocco",
-    description: "Vibrant markets, architecture, and desert landscapes",
+    slug: "combat",
+    title: "Combat Animations",
+    description: "Fluid and dynamic combat sequences for Roblox characters",
     fullDescription:
-      "Morocco is a feast for the senses, with its vibrant colors, intricate patterns, and diverse landscapes. This collection explores the bustling medinas, ancient kasbahs, vast Sahara dunes, and the rich cultural tapestry that makes Morocco so visually captivating.",
-    coverImage: getCoverImagePath("Morocco"),
-    tags: ["Culture", "Desert", "Architecture"],
+      "This collection showcases our combat animations, designed to bring action-packed sequences to life in Roblox games. From sword swings and martial arts moves to special attack effects, each animation is crafted to feel responsive, realistic, and immersive, enhancing gameplay and player engagement.",
+    coverImage: getCoverImagePath("combat"),
+    tags: ["Combat", "Action", "Weapon"],
     featured: false,
-    photos: getCollectionImages("morocco"),
+    animations: getCollectionAnimations("combat"),
   },
   {
     id: "6",
-    slug: "urban-portraits",
-    title: "Urban Portraits",
-    description: "Street photography and urban life around the world",
+    slug: "lifestyle",
+    title: "Lifestyle & Urban Animations",
+    description: "A diverse collection of lifestyle and urban-themed animations",
     fullDescription:
-      "This collection focuses on the human element within urban environments. Through candid street photography and environmental portraits, it captures the diversity, energy, and stories of city dwellers across different cultures and metropolises around the world.",
-    coverImage: getCoverImagePath("Urban Portraits"),
-    tags: ["Urban", "People", "Street"],
+      "A diverse collection of lifestyle and urban-themed animations, capturing everyday moments and street culture. From casual poses to dynamic street scenes, these animations are perfect for adding a touch of realism and relatability to your projects.",
+    coverImage: getCoverImagePath("lifestyle"),
+    tags: ["Casual", "Body", "Urban"],
     featured: false,
-    photos: getCollectionImages("urban-portraits"),
+    animations: getCollectionAnimations("lifestyle"),
   },
 ]
 

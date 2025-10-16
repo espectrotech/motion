@@ -1,18 +1,18 @@
 'use client'
 
+import AnimatedButton from "@/components/animated-button"
 import { BentoCell, BentoGrid, ContainerScale, ContainerScroll } from "@/components/hero-gallery-scroll-animation"
 import { Button } from "@/components/ui/button"
-import AnimatedButton from "@/components/animated-button"
-import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ArrowRight } from "lucide-react"
+import { Logo } from "./logo"
 
 const IMAGES = [
-  "/Morocco/cover.webp",
-  "/new zealand/cover.jpg",
-  "/Tokyo/cover.jpg",
-  "/Bali/cover.jpeg",
-  "/Iceland/cover.jpg",
+  "/animations/first-person/cover.gif",
+  "/animations/main.gif",
+  "/animations/lifestyle/cover.gif",
+  "/animations/jumpscare/cover.gif",
+  "/animations/brainrot/cover.gif",
 ]
 
 export function HeroGalleryScroll() {
@@ -40,7 +40,11 @@ export function HeroGalleryScroll() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          X100
+          <span className="sr-only">Espectro Motion</span>
+          <div className="flex items-center justify-center gap-3">
+            <Logo className="w-36 relative top-0.5" />
+            <span className="text-4xl">Motion</span>
+          </div>
         </motion.h1>
         <motion.p
           className="my-6 max-w-xl text-primary "
@@ -48,7 +52,7 @@ export function HeroGalleryScroll() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-           A Next.js portfolio for professional photographers, designed to flawlessly showcase powerful visual stories.        </motion.p>
+           Immersive Roblox animations designed to move, inspire, and tell stories within virtual worlds.        </motion.p>
         <div className="flex items-center flex-col md:flex-row justify-center gap-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

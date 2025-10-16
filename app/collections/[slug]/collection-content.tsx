@@ -6,9 +6,7 @@ import TagList from "@/components/tag-list"
 import { motion } from "framer-motion"
 import type { Collection } from "@/lib/types"
 import { useEffect } from "react"
-import FeaturedCollections from "@/components/featured-collections"
-import AnimatedButton from "@/components/animated-button"
-import { ArrowRight } from "lucide-react"
+import { FeaturedSection } from "@/components/featured-section"
 
 interface Props {
   collection: Collection
@@ -51,7 +49,7 @@ export function CollectionContent({ collection }: Props) {
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <div className="prose max-w-none dark:prose-invert">
-          <p className="text-lg text-primary leading-relaxed">
+          <p className="text-lg text-primary leading-relaxed text-justify">
             {collection.fullDescription || collection.description}
           </p>
         </div>
@@ -59,38 +57,11 @@ export function CollectionContent({ collection }: Props) {
 
       {/* Photo Gallery */}
       <section className="py-8 px-4 md:px-8 max-w-[90%] mx-auto mb-20">
-        <PhotoGallery photos={collection.photos} />
+        <PhotoGallery photos={collection.animations} />
       </section>
 
       {/* Featured Collections */}
-      <section className="mt-20 mb-20 py-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl mb-4">Featured Collections</h2>
-            <p className="text-primary max-w-2xl mx-auto">
-              Explore some of my most popular photography collections from around the world
-            </p>
-          </motion.div>
-          <FeaturedCollections />
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <AnimatedButton href="/showcase" variant="primary" icon={<ArrowRight size={18} />}>
-              View All Collections
-            </AnimatedButton>
-          </motion.div>
-        </div>
-      </section>
+      <FeaturedSection />
     </div>
   )
 } 

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: "Inter", sans-serif;
-  --font-old-london: "Old London";
+  --font-inter: "Montserrat", sans-serif;
+  --font-old-london: "Montserrat";
 }
 
 @layer utilities {

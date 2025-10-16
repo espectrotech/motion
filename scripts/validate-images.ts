@@ -1,53 +1,53 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs'
+import path from 'path'
 
-// Collection image counts and formats
-const collectionImages: Record<string, { count: number; formats: string[] }> = {
-  'bali': { 
-    count: 16,
-    formats: ['jpeg', 'jpg']  // Bali has images in both formats
-  },
-  'morocco': { 
-    count: 21,  // Updated count based on actual files
-    formats: ['webp']
-  },
-  'tokyo': { 
-    count: 20,  // Updated count based on actual files
-    formats: ['jpg']
-  },
-  'new-zealand': { 
-    count: 18,
-    formats: ['jpg']
-  },
-  'iceland': { 
-    count: 14,
-    formats: ['jpg']
-  },
-  'urban-portraits': { 
-    count: 16,
-    formats: ['jpg']
-  }
-}
-
-// Collection format mapping for cover images
-const collectionFormats: Record<string, string> = {
-  'bali': 'jpeg',
-  'morocco': 'webp',
-  'tokyo': 'jpg',
-  'new-zealand': 'jpg',
-  'iceland': 'jpg',
-  'urban-portraits': 'jpg'
-}
+// Collection format mapping
+export const collectionFormats: Record<string, string> = {
+  'brainrot': 'gif',
+  'combat': 'gif',
+  'meshrig': 'gif',
+  'gun': 'gif',
+  'finalization': 'gif',
+  'lifestyle': 'gif'
+} as const
 
 // Collection folder name mapping (for case sensitivity)
-const collectionFolders: Record<string, string> = {
-  'bali': 'Bali',
-  'morocco': 'Morocco',
-  'tokyo': 'Tokyo',
-  'new-zealand': 'new zealand',
-  'iceland': 'Iceland',
-  'urban-portraits': 'Urban Portraits'
-}
+export const collectionFolders: Record<string, string> = {
+  'brainrot': 'brainrot',
+  'combat': 'combat',
+  'meshrig': 'meshrig',
+  'gun': 'gun',
+  'finalization': 'finalization',
+  'lifestyle': 'lifestyle'
+} as const
+
+// Collection image counts and formats
+export const collectionImages: Record<string, { count: number; formats: string[] }> = {
+  'brainrot': { 
+    count: 6,
+    formats: ['gif']
+  },
+  'combat': { 
+    count: 5,
+    formats: ['gif']
+  },
+  'meshrig': { 
+    count: 10,
+    formats: ['gif']
+  },
+  'gun': { 
+    count: 4,
+    formats: ['gif']
+  },
+  'finalization': { 
+    count: 6,
+    formats: ['gif']
+  },
+  'lifestyle': { 
+    count: 16,
+    formats: ['gif']
+  }
+} as const
 
 interface ValidationResult {
   hasErrors: boolean
@@ -79,7 +79,7 @@ function validateImages(dryRun: boolean = false): ValidationResult {
     const folderName = collectionFolders[slug]
     console.log(`\n📁 Checking collection: ${folderName}`)
     
-    const collectionDir = path.join(publicDir, folderName)
+    const collectionDir = path.join(publicDir, 'animations', folderName)
     
     // Check if collection directory exists
     if (!fs.existsSync(collectionDir)) {
