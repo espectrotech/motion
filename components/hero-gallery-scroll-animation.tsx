@@ -93,13 +93,14 @@ const BentoCell = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
     const { scrollYProgress } = useContainerScrollContext()
     const translate = useTransform(
       scrollYProgress,
-      [0.1, 0.9],
+      [0.1, 0.5],
       ["-35%", "0%"],
       { clamp: true }
     )
+
     const scale = useTransform(
       scrollYProgress,
-      [0, 0.9],
+      [0, 0.5],
       [0.5, 1],
       { clamp: true }
     )
