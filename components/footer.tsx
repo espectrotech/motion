@@ -37,7 +37,7 @@ export default function Footer() {
             Immersive Roblox animations designed to move, inspire, and tell stories within virtual worlds.
           </p>
           <div className="flex space-x-4 items-center">
-            <motion.a
+            {/* <motion.a
               href="https://www.instagram.com/espectro.tech"
               target="_blank"
               rel="noopener noreferrer"
@@ -47,7 +47,7 @@ export default function Footer() {
             >
               <Instagram size={20} />
               <span className="sr-only">Instagram</span>
-            </motion.a>
+            </motion.a> */}
              {/* <motion.a
                 href="https://linkedin.com"
                 target="_blank"
@@ -59,17 +59,17 @@ export default function Footer() {
                 <Linkedin size={20} />
                 <span className="sr-only">Linkedin</span>
             </motion.a> */}
-             <motion.a
-                href="https://github.com/espectrotech"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground hover:text-primary transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Github size={20} />
-                <span className="sr-only">Github</span>
-              </motion.a> 
+            {/* <motion.a
+              href="https://github.com/espectrotech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Github size={20} />
+              <span className="sr-only">Github</span>
+            </motion.a>  */}
             <ThemeToggle />
           </div>
         </motion.div>
